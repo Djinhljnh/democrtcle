@@ -3,21 +3,20 @@ version: 2.1
 jobs:
   clone-repo:
     docker:
-      - image: cimg/python:3.8 
+      - image: cimg/python:3.8
     steps:
-      - checkout
-      - run:
-          name: Clone Repository
-          command: git clone https://github.com/Toan211203/emo2_jenkin.git
+      - checkout  # This checks out the code from the repository
 
   build:
     docker:
-      - image: cimg/python:3.8 
+      - image: cimg/python:3.8
     steps:
       - checkout
       - run:
           name: Build
-          command: python3 hello.py 
+          command: |
+            cd emo2_jenkin  # Navigate to the cloned repository directory
+            python3 hello.py  # Run the script
 
   test:
     docker:
@@ -27,6 +26,7 @@ jobs:
       - run:
           name: Testing
           command: |
+            cd emo2_jenkin  # Navigate to the cloned repository directory
             if [ -f hello.py ]; then
               echo "File hello.py found. Displaying its content:"
               cat hello.py
@@ -44,7 +44,7 @@ jobs:
       - checkout
       - run:
           name: Deploy
-          command: echo "Deploying..."
+          command: echo "Deploying..."  # Add your actual deployment commands here
 
 workflows:
   version: 2
