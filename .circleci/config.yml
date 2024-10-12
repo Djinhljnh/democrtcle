@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   clone-repo:
     docker:
-      - image: cimg/python:3.8  # Sử dụng Docker image Python 3.8, có thể thay đổi theo nhu cầu
+      - image: cimg/python:3.8 
     steps:
       - checkout
       - run:
@@ -12,16 +12,16 @@ jobs:
 
   build:
     docker:
-      - image: cimg/python:3.8  # Sử dụng Python image
+      - image: cimg/python:3.8 
     steps:
       - checkout
       - run:
           name: Build
-          command: python3 hello.py  # Chạy script hello.py
+          command: python3 hello.py 
 
   test:
     docker:
-      - image: cimg/python:3.8  # Sử dụng Docker image Python 3.8
+      - image: cimg/python:3.8
     steps:
       - checkout
       - run:
@@ -39,12 +39,12 @@ jobs:
 
   deploy:
     docker:
-      - image: cimg/python:3.8  # Có thể sử dụng image khác tuỳ thuộc vào yêu cầu của deploy
+      - image: cimg/python:3.8
     steps:
       - checkout
       - run:
           name: Deploy
-          command: echo "Deploying..."  # Thêm các lệnh deploy thực tế tại đây
+          command: echo "Deploying..."
 
 workflows:
   version: 2
