@@ -14,9 +14,7 @@ jobs:
       - checkout
       - run:
           name: Build
-          command: |
-            cd emo2_jenkin  # Navigate to the cloned repository directory
-            python3 hello.py  # Run the script
+          command: python3 hello.py  # Run the script directly
 
   test:
     docker:
@@ -26,7 +24,6 @@ jobs:
       - run:
           name: Testing
           command: |
-            cd emo2_jenkin  # Navigate to the cloned repository directory
             if [ -f hello.py ]; then
               echo "File hello.py found. Displaying its content:"
               cat hello.py
